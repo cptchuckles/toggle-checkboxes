@@ -1,0 +1,69 @@
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 3rem;
+  border: 1px solid gray;
+  border-radius: 1rem;
+  position: relative;
+  background-color: #ddd;
+  transition: background-color 0.1s;
+  margin-right: 0.5rem;
+}
+
+input[type="checkbox"]::after {
+  position: absolute;
+  content: "";
+  left: 0.2rem;
+  top: 0.1rem;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  border: 1px solid transparent;
+  background-color: gray;
+  transition: left 0.1s, background-color 0.1s;
+}
+
+input[type="checkbox"]:checked::after {
+  left: calc(100% - 1.3rem);
+  background-color: #dfd;
+  border: 1px solid white;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #0c0;
+}
+
+input:focus {
+  outline: none;
+}
+
+.option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+label.unset, label.set {
+  display: inline;
+  height: 1.5rem;
+  font-size: 1.3rem;
+  vertical-align: center;
+  overflow: hidden;
+}
+
+.option input[type="checkbox"]:checked ~ label.unset {
+  visibility: hidden;
+  width: 0;
+}
+.option input[type="checkbox"] ~ label.unset {
+  visibility: visible;
+  width: auto;
+}
+.option input[type="checkbox"]:checked ~ label.set {
+  visibility: visible;
+  width: auto;
+}
+.option input[type="checkbox"] ~ label.set {
+  visibility: hidden;
+  width: 0;
+}
