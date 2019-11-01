@@ -43,27 +43,35 @@ input:focus {
   align-items: center;
 }
 
-label.unset, label.set {
-  display: inline;
+
+.label {
+  display: flex;
+  flex-direction: column;
   height: 1.5rem;
-  font-size: 1.3rem;
-  vertical-align: center;
+  width: 100%;
   overflow: hidden;
+  position: relative;
+}
+label.unset, label.set {
+  display: block;
+  position: absolute;
+  height: 1.5rem;
+  width: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 1.3rem;
+  transition: top 0.3s;
 }
 
-.option input[type="checkbox"]:checked ~ label.unset {
-  visibility: hidden;
-  width: 0;
+.option input[type="checkbox"]:checked ~ .label label.unset {
+  top: -1.5rem;
 }
-.option input[type="checkbox"] ~ label.unset {
-  visibility: visible;
-  width: auto;
+.option input[type="checkbox"] ~ .label label.unset {
+  top: 0;
 }
-.option input[type="checkbox"]:checked ~ label.set {
-  visibility: visible;
-  width: auto;
+.option input[type="checkbox"]:checked ~ .label label.set {
+  top: 0;
 }
-.option input[type="checkbox"] ~ label.set {
-  visibility: hidden;
-  width: 0;
+.option input[type="checkbox"] ~ .label label.set {
+  top: 1.5rem;
 }
